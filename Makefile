@@ -6,3 +6,6 @@ test:
 
 ps:
 	$(CC) pscan.cpp -o ps $CFLAGS) 
+
+clean:
+	@rm 'find . -type f -executable'
