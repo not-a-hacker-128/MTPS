@@ -16,11 +16,15 @@ void scan() {
         tower.sin_port=htons(i);
 
         // Check due creating socket if there is an error , the socket close if there is an error 
-        // continue itteration
+        // continue iteration
         if((sockfd = socket(PF_INET,SOCK_STREAM,0)) < 0){
             close(sockfd);
             continue;
 
+        }
+        // If able to create a socket,if connection succesfull add the portnumber in vector I to the open ports list.
+        if (connect(sockfd, (struct sockaddr*) &tower, sizeof(tower)) == 0){
+            open_ports.push_back(i);
         }
     }
 }
