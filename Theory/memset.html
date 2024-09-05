@@ -1,0 +1,74 @@
+<h1>Code </h1>
+<pre>
+  <code>
+   memset(&tower, 0, sizeof(tower));
+        tower.sin_family = AF_INET;
+        tower.sin_addr.s_addr = inet_addr("127.0.0.1");
+        tower.sin_port=htons(i);
+  </code>
+</pre>
+
+
+<h3>Explained: Memset </h3>
+Memset() is a C++ function that 
+- copies a single character <br>
+for a specified number of times to the given bytes of memory.<br>
+- It is useful for filling a number of bytes with a given value <br>
+starting from a specific memory location. It is defined in <cstring> header file.
+
+
+
+<h3>Parameters</h3>
+<pre>
+  <code>
+    memset(str,ch, n);
+  </code>
+</pre><br>
+    - str[]: Pointer to the object to copy the character.<br>
+    - ch: The character to copy. It can be a character, a normal value as well a Boolean value.<br>
+    - num: Number of bytes to copy.<br>
+    - Return value: <b>The memset() function returns str, the pointer to the destination string. </b>
+
+
+<h3>std::memset() </h3> <br>
+- Converts the value ch to unsigned char and copies it into each of the first n characters of the object pointed to by str[]. <br>
+- If the object is not trivially-copyable (e.g., scalar, array, or a C-compatible struct), the behavior is undefined.<br>
+- If n is greater than the size of the object pointed to by str, the behaviour is undefined. <br>
+- Memset works byte by byte.<br>
+
+
+
+<h3> Code example(simplified) </h3>
+<pre>
+  <code>
+// C++ program to demonstrate memset
+#include <cstring>
+#include <iostream>
+using namespace std;
+
+// Driver Code
+int main()
+{
+    char str[] = "geeksforgeeks";
+    // setting each byte of memory of str to 't' using
+    // memset
+    memset(str, 't', sizeof(str));
+  
+    cout << str;
+  
+    return 0;
+}
+  </code>
+</pre>
+
+
+<h3> Advantages and disadvantages </h3>
+<h4>Advantages of std::memset( ) function</h4>
+- It is a one-line piece of code, making it highly compact, fast and improving readability overall.
+- The C++ memset() function aids the programmer in solving the misalignment issue. There are instances where you discover that the processor is having trouble with data alignment, which results in a programming mistake. The memcpy() and memcmp() methods in C++ are the best options in this situation.
+
+<h4>Limitations of std::memset() in C++ </h4>
+-Memset operates at the byte level, and its use is not type-safe. It treats the memory block as a sequence of bytes.
+- For non-POD (Plain Old Data) types in C++, such as classes with constructors, memset should be used with caution. Initializing such objects using memset can bypass constructors and lead to undefined behaviour. Instead, constructors should be used for initialization.
+
+<i>Memset() is an old function inherited from C. It is not very flexible when filling memory with different data types and value.</i> 
