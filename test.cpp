@@ -26,6 +26,7 @@ void scan() {
         if (connect(sockfd, (struct sockaddr*) &tower, sizeof(tower)) == 0){
             open_ports.push_back(i);
         }
+        close(sockfd);
     }
 }
 
